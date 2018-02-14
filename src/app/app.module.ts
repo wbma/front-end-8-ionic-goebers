@@ -1,3 +1,5 @@
+import { ProfilePage } from './../pages/profile/profile';
+import { LoginPage } from './../pages/login/login';
 import { NgModule, ErrorHandler } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
@@ -10,6 +12,11 @@ import { TabsPage } from '../pages/tabs/tabs';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
+import { MediaProvider } from '../providers/media/media';
+import { RegisterPage } from '../pages/register/register';
+import { UploadPage } from '../pages/upload/upload';
+import { HttpClientModule, HttpClient } from '@angular/common/http';
+import { ThumbnailPipe } from '../pipes/thumbnail/thumbnail';
 
 @NgModule({
   declarations: [
@@ -17,10 +24,16 @@ import { SplashScreen } from '@ionic-native/splash-screen';
     AboutPage,
     ContactPage,
     HomePage,
-    TabsPage
+    TabsPage,
+    LoginPage,
+    ProfilePage,
+    RegisterPage,
+    UploadPage,
+    ThumbnailPipe
   ],
   imports: [
     BrowserModule,
+    HttpClientModule,
     IonicModule.forRoot(MyApp)
   ],
   bootstrap: [IonicApp],
@@ -29,12 +42,17 @@ import { SplashScreen } from '@ionic-native/splash-screen';
     AboutPage,
     ContactPage,
     HomePage,
-    TabsPage
+    TabsPage,
+    LoginPage,
+    ProfilePage,
+    RegisterPage,
+    UploadPage
   ],
   providers: [
     StatusBar,
     SplashScreen,
-    {provide: ErrorHandler, useClass: IonicErrorHandler}
+    {provide: ErrorHandler, useClass: IonicErrorHandler},
+    MediaProvider
   ]
 })
 export class AppModule {}
